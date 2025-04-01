@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import './ProductList.css'
 import CartItem from './CartItem';
-import CartReducer, { addItem } from './CartSlice';
+import { addItem } from './CartSlice';
 function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
@@ -265,7 +265,7 @@ function ProductList({ onHomeClick }) {
             ...prevState,
             [plant.name]: true,
         }));
-    }
+    };
     return (
         <div>
             <div className="navbar" style={styleObj}>
