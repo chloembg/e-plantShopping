@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
 import './ProductList.css'
 import CartItem from './CartItem';
 import { addItem } from './CartSlice';
