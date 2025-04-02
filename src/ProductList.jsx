@@ -274,6 +274,19 @@ function ProductList({ onHomeClick }) {
         }));
     };
 
+    const handleRemoveFromCart = (plant) => {
+        setAddedToCart((prevState) => ({
+            ...prevState,
+            [plant.name]: false, 
+        }));
+    };
+
+    const buttonStyle = (plantName) => ({
+        backgroundColor: addedToCart[plantName] ? '#d3d3d3' : '#4CAF50', 
+        cursor: addedToCart[plantName] ? 'not-allowed' : 'pointer', 
+        color: '#fff',
+    });
+
     return (
         <div>
             <div className="navbar" style={styleObj}>
@@ -306,7 +319,9 @@ function ProductList({ onHomeClick }) {
                                     <div className="product-title">{plant.name}</div>
                                     <p>{plant.description}</p>
                                     <div className="product-price">{plant.cost}</div>
-                                    <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                                    <button  className="product-button" onClick={() => handleAddToCart(plant)} disabled={addedToCart[plant.name]} style={buttonStyle(plant.name)}>
+                                    {addedToCart[plant.name] ? 'Added to Cart' : 'Add to Cart'}
+                                    </button>
                                 </div>
                                 ))}
                             </div>
@@ -315,7 +330,7 @@ function ProductList({ onHomeClick }) {
 
                 </div>
             ) : (
-                <CartItem onContinueShopping={handleContinueShopping} />
+                <CartItem onContinueShopping={handleContinueShopping} onRemoveFromCart={handleRemoveFromCart}/>
             )}
         </div>
     );
